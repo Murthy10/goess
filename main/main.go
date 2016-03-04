@@ -13,10 +13,9 @@ func main() {
 	flag.Parse()
 	areThereAnyArguments()
 	estimations := stringSliceToFloatSlice(flag.Args())
-	//lambda := calc.Average(estimations)
-	fmt.Println("Integrated: ", calc.IntegratePoissonDistribution(3, 200))
-	fmt.Println("Poisson: ", calc.PoissonDistribution(3, 4))
-	fmt.Println("tail:", estimations)
+	lambda := calc.Average(estimations)
+	estimatedTime := calc.IntegratePoissonDistribution(lambda, 3*int(lambda)) * lambda
+	fmt.Println("Estimated time: ", estimatedTime)
 }
 
 func stringSliceToFloatSlice(stringSlice []string) []float64 {

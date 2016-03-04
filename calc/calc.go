@@ -16,8 +16,6 @@ func PoissonDistribution(lambda float64, k int) float64 {
 	counter := (math.Pow(lambda, float64(k))) * (math.Exp((lambda * -1)))
 	denominator := Factorial(k)
 	bigCounter := big.NewFloat(counter)
-	//fmt.Println("Counter: ", bigCounter)
-	//fmt.Println("Denominator: ", denominator)
 	poisson := bigCounter.Quo(bigCounter, denominator)
 	floatPoisson, _ := poisson.Float64()
 	return floatPoisson
